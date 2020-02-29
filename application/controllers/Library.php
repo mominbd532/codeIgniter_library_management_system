@@ -16,5 +16,6 @@ class Library extends CI_Controller {
         $data['footer']=$this->load->view('layout/footer','',TRUE );
         $data['sidebar']=$this->load->view('layout/sidebar','',TRUE );
        $this->load->view('home',$data);
+
     }
 }
