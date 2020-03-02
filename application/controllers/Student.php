@@ -36,10 +36,23 @@ class Student extends CI_Controller {
             redirect("student/addStudent");
 
         }else{
-            //
+            $this->student_model->saveStudent($data);
+            $sData = array();
+            $sData['msg']='<span style="color: green;">Student Added Successfully</span> ';
+            $this->session->set_flashdata($sData);
+            redirect("student/addStudent");
         }
 
 
+    }
+
+    public function viewStudent(){
+        $data['title']= 'Student List';
+        $data['header']=$this->load->view('layout/header',$data,TRUE );
+        $data['footer']=$this->load->view('layout/footer','',TRUE );
+        $data['sidebar']=$this->load->view('layout/sidebar','',TRUE );
+        $data['studentData']=$this->student_model->studentData();
+        $this->load->view('student/view_student',$data);
     }
 
 

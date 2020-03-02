@@ -10,7 +10,7 @@
     <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="nav-item active  ">
-                <a class="nav-link" href="./dashboard.html">
+                <a class="nav-link" href="<?php echo base_url(); ?>">
                     <i class="material-icons">dashboard</i>
                     <p>Dashboard</p>
                 </a>
@@ -22,9 +22,9 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="./tables.html">
+                <a class="nav-link" href="<?php echo base_url(); ?>student/viewStudent">
                     <i class="material-icons">content_paste</i>
-                    <p>Table List</p>
+                    <p>Student List</p>
                 </a>
             </li>
             <li class="nav-item ">
