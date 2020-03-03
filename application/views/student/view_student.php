@@ -68,6 +68,12 @@
                 <div class="row">
 
                     <div class="col-md-12">
+                        <?php
+                        $msg =$this->session->flashdata('msg');
+                        if(isset($msg)){
+                            echo $msg;
+                        }
+                        ?>
                         <div class="card card-plain">
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title mt-0">Student Information</h4>
@@ -75,7 +81,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-hover">
+                                    <table id="example" class="table table-hover">
                                         <thead class="">
                                         <th>
                                             ID
@@ -122,6 +128,8 @@
                                                 <?php echo $stdInfo->reg;?>
                                             </td>
                                             <td>
+                                                <a href="<?php echo base_url(); ?>student/editStudent/<?php echo $stdInfo->stdId;?>"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;&nbsp;
+                                                <a href=""><i class="fa fa-trash"></i></a>
 
                                             </td>
                                         </tr>

@@ -55,6 +55,46 @@ class Student extends CI_Controller {
         $this->load->view('student/view_student',$data);
     }
 
+    public function editStudent($stdId){
+        $data['title']= 'Edit Student';
+        $data['header']=$this->load->view('layout/header',$data,TRUE );
+        $data['footer']=$this->load->view('layout/footer','',TRUE );
+        $data['sidebar']=$this->load->view('layout/sidebar','',TRUE );
+        $data['studentInfo']=$this->student_model->studentInfo($stdId);
+        $this->load->view('student/edit_student',$data);
+
+    }
+
+    public function updateStudent($stdId){
+        $data['stdId']=$stdId;
+        $data['name']=$this->input->post('name');
+        $data['dpt']=$this->input->post('dpt');
+        $data['roll']=$this->input->post('roll');
+        $data['reg']=$this->input->post('reg');
+
+        $name= $data['name'];
+        $dpt= $data['dpt'];
+        $roll= $data['roll'];
+        $reg= $data['reg'];
+
+        if(empty($name)&&empty($dpt)&&empty($roll)&&empty($reg)){
+            $sData = array();
+            $sData['msg']='<span style="color: red;">Field must be not empty1</span> ';
+            $this->session->set_flashdata($sData);
+            redirect("student/view_student");
+
+        }else{
+            $this->student_model->updateStudent($data);
+            $sData = array();
+            $sData['msg']='<span style="color: green;">Student Updated Successfully</span> ';
+            $this->session->set_flashdata($sData);
+            redirect("student/viewStudent");
+        }
+
+
+    }
+
+
 
 
 

@@ -109,12 +109,14 @@
 <script src="<?php echo base_url();?>assets/js/core/jquery.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/core/popper.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/core/bootstrap-material-design.min.js"></script>
+<script src="<?php echo base_url();?>assets/js/main.js"></script>
 <script src="https://unpkg.com/default-passive-events"></script>
 <script src="<?php echo base_url();?>assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!--  Google Maps Plugin    -->
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
 <!-- Chartist JS -->
 <script src="<?php echo base_url();?>assets/js/plugins/chartist.min.js"></script>
 <!--  Notifications Plugin    -->
@@ -123,6 +125,14 @@
 <script src="<?php echo base_url();?>assets/js/material-dashboard.js?v=2.1.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="<?php echo base_url();?>assets/demo/demo.js"></script>
+<!-- DataTable JS -->
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+
 <script>
     $(document).ready(function() {
         $().ready(function() {
