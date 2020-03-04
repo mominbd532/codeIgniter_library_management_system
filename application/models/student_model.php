@@ -36,6 +36,12 @@ class Student_Model extends CI_Model {
 
     }
 
+    public function deleteStudent($stdId){
+        $this->db->where('stdId',$stdId);
+        $this->db->delete('student');
+    }
+
+
 
 
 

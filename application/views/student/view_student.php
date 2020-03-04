@@ -129,7 +129,24 @@
                                             </td>
                                             <td>
                                                 <a href="<?php echo base_url(); ?>student/editStudent/<?php echo $stdInfo->stdId;?>"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;&nbsp;
-                                                <a href=""><i class="fa fa-trash"></i></a>
+                                                <a  href="#myModal<?php echo $stdInfo->stdId;?>" role="button" data-toggle="modal"><i class="fa fa-trash"></i></a>
+
+
+                                                <div class="modal small fade" id="myModal<?php echo $stdInfo->stdId;?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h3 id="myModalLabel">Are your sure want to delete?</h3>
+                                                            </div>
+
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                                                                <a class="btn btn-danger" href="<?php echo base_url(); ?>student/deleteStudent/<?php echo $stdInfo->stdId;?>" >Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
 
                                             </td>
                                         </tr>
