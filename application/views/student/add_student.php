@@ -68,12 +68,16 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-8">
-                        <?php
-                        $msg =$this->session->flashdata('msg');
-                        if(isset($msg)){
-                            echo $msg;
-                        }
-                        ?>
+<!--                        --><?php
+//                        $msg =$this->session->flashdata('msg');
+//                        if(isset($msg)){
+//                            ?>
+<!--                            <div id="msg">-->
+<!--                                --><?php //echo $msg; ?>
+<!--                            </div>-->
+<!---->
+<!--                        --><?php //   }
+//                        ?>
                         <div class="card">
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title">Add Student</h4>
@@ -117,9 +121,11 @@
 
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary pull-right">Add Student</button>
-                                    <div class="clearfix"></div>
+                                    <button type="submit" class="btn btn-primary pull-right" onclick="md.showNotification('top','right')">Add Student</button>
+                                    <div class="clearfix" ></div>
                                 </form>
+
+
                             </div>
                         </div>
                     </div>
@@ -127,4 +133,6 @@
                 </div>
             </div>
         </div>
+
+
 <?php if(isset($footer)){echo $footer;}?>

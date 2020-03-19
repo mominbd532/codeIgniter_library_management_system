@@ -31,14 +31,14 @@ class Student extends CI_Controller {
 
         if(empty($name) || empty($dpt) || empty($roll) || empty($reg)){
             $sData = array();
-            $sData['msg']='<span style="color: red;">Field must be not empty</span> ';
+            $sData['error']='Field must be not empty';
             $this->session->set_flashdata($sData);
             redirect("student/addStudent");
 
         }else{
             $this->student_model->saveStudent($data);
             $sData = array();
-            $sData['msg']='<span style="color: green;">Student Added Successfully</span> ';
+            $sData['success']='Student Added Successfully';
             $this->session->set_flashdata($sData);
             redirect("student/addStudent");
         }
@@ -79,14 +79,14 @@ class Student extends CI_Controller {
 
         if(empty($name) || empty($dpt) || empty($roll) ||  empty($reg)){
             $sData = array();
-            $sData['msg']='<span style="color: red;">Field must be not empty</span> ';
+            $sData['error']='Field must be not empty ';
             $this->session->set_flashdata($sData);
             redirect("student/viewStudent");
 
         }else{
             $this->student_model->updateStudent($data);
             $sData = array();
-            $sData['msg']='<span style="color: green;">Student Updated Successfully</span> ';
+            $sData['success']='Student Updated Successfully';
             $this->session->set_flashdata($sData);
             redirect("student/viewStudent");
         }
@@ -97,7 +97,7 @@ class Student extends CI_Controller {
     public function deleteStudent($stdId){
         $this->student_model->deleteStudent($stdId);
         $sData = array();
-        $sData['msg']='<span style="color: red;">Student Deleted Successfully</span> ';
+        $sData['error']='Student Deleted Successfully';
         $this->session->set_flashdata($sData);
         redirect("student/viewStudent");
     }

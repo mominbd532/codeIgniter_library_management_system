@@ -7,7 +7,7 @@
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
             <div class="navbar-wrapper">
-                <a class="navbar-brand" href="javascript:void(0)">Add Student</a>
+                <a class="navbar-brand" href="javascript:void(0)">Edit Department</a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
                 <span class="sr-only">Toggle navigation</span>
@@ -68,58 +68,39 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-8">
-<!--                    --><?php
-//                    $msg =$this->session->flashdata('msg');
-//                    if(isset($msg)){
-//                        echo $msg;
-//                    }
-//                    ?>
+                    <!--                        --><?php
+                    //                        $msg =$this->session->flashdata('msg');
+                    //                        if(isset($msg)){
+                    //                            ?>
+                    <!--                            <div id="msg">-->
+                    <!--                                --><?php //echo $msg; ?>
+                    <!--                            </div>-->
+                    <!---->
+                    <!--                        --><?php //   }
+                    //                        ?>
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title">Edit Student</h4>
-                            <p class="card-category">Please edit student</p>
+                            <h4 class="card-title">Edit Department</h4>
+                            <p class="card-category">Please edit department</p>
                         </div>
                         <div class="card-body">
-                            <form action="<?php echo base_url(); ?>student/updateStudent/<?php echo $studentInfo->stdId;?>" method="post">
+                            <form action="<?php echo base_url(); ?>department/updateDepartment/<?php echo $departmentInfo->dptID;?>" method="post">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="bmd-label-floating">Student Name</label>
-                                            <input type="text" name="name" class="form-control" value="<?php echo $studentInfo->name;?>">
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Department</label>
-                                            <input type="text" name="dpt" class="form-control" value="<?php echo $studentInfo->dpt;?>">
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Roll No.</label>
-                                            <input type="text" name="roll" class="form-control" value="<?php echo $studentInfo->roll;?>">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Reg No.</label>
-                                            <input type="text" name="reg" class="form-control" value="<?php echo $studentInfo->reg;?>">
+                                            <label class="bmd-label-floating">Department Name</label>
+                                            <input type="text" name="dptName" class="form-control" value="<?php echo $departmentInfo->dptName;?>">
                                         </div>
                                     </div>
 
                                 </div>
 
-                                <button type="submit" class="btn btn-primary pull-right">Edit Student</button>
-                                <div class="clearfix"></div>
+
+                                <button type="submit" class="btn btn-primary pull-right" onclick="md.showNotification('top','right')">Edit Department</button>
+                                <div class="clearfix" ></div>
                             </form>
+
+
                         </div>
                     </div>
                 </div>
@@ -127,4 +108,6 @@
             </div>
         </div>
     </div>
+
+
 <?php if(isset($footer)){echo $footer;}?>

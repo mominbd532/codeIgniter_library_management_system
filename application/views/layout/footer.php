@@ -125,6 +125,7 @@
 <script src="<?php echo base_url();?>assets/js/material-dashboard.js?v=2.1.0"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="<?php echo base_url();?>assets/demo/demo.js"></script>
+<script src="<?php echo base_url();?>assets/js/toasty.min.js"></script>
 <!-- DataTable JS -->
 
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -134,7 +135,29 @@
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 
 <script>
+    $(document).ready(function () {
+        var toast = new Toasty();
+
+        <?php if ($this->session->flashdata('success')) {?>
+        toast.success("<?php echo $this->session->flashdata('success'); ?>");
+        <?php } else if ($this->session->flashdata('error')) {?>
+        toast.error("<?php echo $this->session->flashdata('error'); ?>");
+        <?php } else if ($this->session->flashdata('msg1')) {?>
+        toast.warning("<?php echo $this->session->flashdata('warning'); ?>");
+        <?php } else if ($this->session->flashdata('info')) {?>
+        toast.info("<?php echo $this->session->flashdata('info'); ?>");
+        <?php }?>
+
+
+
+
+    });
+</script>
+
+
+<script>
     $(document).ready(function() {
+
         $().ready(function() {
             $sidebar = $('.sidebar');
 
@@ -302,6 +325,7 @@
 
     });
 </script>
+
 </body>
 
 </html>

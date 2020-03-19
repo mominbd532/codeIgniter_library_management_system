@@ -7,7 +7,7 @@
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
             <div class="navbar-wrapper">
-                <a class="navbar-brand" href="javascript:void(0)">Add Student</a>
+                <a class="navbar-brand" href="javascript:void(0)">Department List</a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
                 <span class="sr-only">Toggle navigation</span>
@@ -63,68 +63,88 @@
         </div>
     </nav>
     <!-- End Navbar -->
-
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-8">
-<!--                    --><?php
-//                    $msg =$this->session->flashdata('msg');
-//                    if(isset($msg)){
-//                        echo $msg;
-//                    }
-//                    ?>
-                    <div class="card">
+
+                <div class="col-md-12">
+                    <?php
+                    $msg =$this->session->flashdata('msg');
+                    if(isset($msg)){
+                        echo $msg;
+                    }
+                    ?>
+                    <div class="card card-plain">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title">Edit Student</h4>
-                            <p class="card-category">Please edit student</p>
+                            <h4 class="card-title mt-0">Department Information</h4>
+                            <p class="card-category">See all department here</p>
                         </div>
                         <div class="card-body">
-                            <form action="<?php echo base_url(); ?>student/updateStudent/<?php echo $studentInfo->stdId;?>" method="post">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Student Name</label>
-                                            <input type="text" name="name" class="form-control" value="<?php echo $studentInfo->name;?>">
-                                        </div>
-                                    </div>
+                            <div class="table-responsive">
+                                <table id="example" class="table table-hover">
+                                    <thead class="">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Department Name
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                    </thead>
+                                    <tbody>
 
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Department</label>
-                                            <input type="text" name="dpt" class="form-control" value="<?php echo $studentInfo->dpt;?>">
-                                        </div>
-                                    </div>
 
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Roll No.</label>
-                                            <input type="text" name="roll" class="form-control" value="<?php echo $studentInfo->roll;?>">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Reg No.</label>
-                                            <input type="text" name="reg" class="form-control" value="<?php echo $studentInfo->reg;?>">
-                                        </div>
-                                    </div>
+                                    <?php
+                                    $i = 0;
+                                    foreach ($departmentData as $dptInfo){
+                                        $i++;
+                                        ?>
+                                        <tr>
+                                            <td>
+                                                <?php echo $i;?>
 
-                                </div>
+                                            </td>
+                                            <td>
+                                                <?php echo $dptInfo->dptName;?>
+                                            </td>
 
-                                <button type="submit" class="btn btn-primary pull-right">Edit Student</button>
-                                <div class="clearfix"></div>
-                            </form>
+
+                                            <td>
+                                                <a href="<?php echo base_url(); ?>department/editDepartment/<?php echo $dptInfo->dptID;?>"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;&nbsp;
+                                                <a  href="#myModal<?php echo $dptInfo->dptID;?>" role="button" data-toggle="modal"><i class="fa fa-trash"></i></a>
+
+
+                                                <div class="modal small fade" id="myModal<?php echo $dptInfo->dptID;?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h3 id="myModalLabel">Are your sure want to delete?</h3>
+                                                            </div>
+
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                                                                <a class="btn btn-danger" href="<?php echo base_url(); ?>department/deleteDepartment/<?php echo $dptInfo->dptID;?>" >Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
+
+
 <?php if(isset($footer)){echo $footer;}?>
