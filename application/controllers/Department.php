@@ -37,7 +37,7 @@ class Department extends CI_Controller {
             $sData = array();
             $sData['success']='Department Added Successfully';
             $this->session->set_flashdata($sData);
-            redirect("department/addDepartment");
+            redirect("department/viewDepartment");
         }
 
 

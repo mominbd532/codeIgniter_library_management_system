@@ -38,7 +38,7 @@ class Author extends CI_Controller {
             $sData = array();
             $sData['success']='Author Added Successfully';
             $this->session->set_flashdata($sData);
-            redirect("author/addAuthor");
+            redirect("author/viewAuthor");
         }
 
 

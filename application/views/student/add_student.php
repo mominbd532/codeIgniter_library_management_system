@@ -99,7 +99,7 @@
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Department</label>
 
-                                                <select name="dptID" class="form-control">
+                                                <select name="dptID" class="form-control dropdown">
                                                     <option value="0" >Select Department</option>
                                                     <?php
                                                     foreach ($departmentData as $dData){

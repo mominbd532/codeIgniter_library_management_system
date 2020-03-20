@@ -43,7 +43,7 @@ class Student extends CI_Controller {
             $sData = array();
             $sData['success']='Student Added Successfully';
             $this->session->set_flashdata($sData);
-            redirect("student/addStudent");
+            redirect("student/viewStudent");
         }
 
 

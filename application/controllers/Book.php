@@ -19,6 +19,7 @@ class Book extends CI_Controller {
         $data['footer']=$this->load->view('layout/footer','',TRUE );
         $data['sidebar']=$this->load->view('layout/sidebar','',TRUE );
         $data['departmentData']=$this->department_model->departmentData();
+        $data['authorData']=$this->author_model->authorData();
         $this->load->view('book/add_book',$data);
     }
 
@@ -45,7 +46,7 @@ class Book extends CI_Controller {
             $sData = array();
             $sData['success']='Book Added Successfully';
             $this->session->set_flashdata($sData);
-            redirect("book/addBook");
+            redirect("book/viewBook");
         }
 
 
@@ -56,8 +57,9 @@ class Book extends CI_Controller {
         $data['header']=$this->load->view('layout/header',$data,TRUE );
         $data['footer']=$this->load->view('layout/footer','',TRUE );
         $data['sidebar']=$this->load->view('layout/sidebar','',TRUE );
-        $data['studentData']=$this->student_model->studentData();
+        $data['bookData']=$this->book_model->bookData();
         $data['departmentData']=$this->department_model->departmentData();
+        $data['authorData']=$this->author_model->authorData();
         $this->load->view('book/view_book',$data);
     }
 
@@ -68,12 +70,13 @@ class Book extends CI_Controller {
         $data['sidebar']=$this->load->view('layout/sidebar','',TRUE );
         $data['bookInfo']=$this->book_model->bookInfo($bookId);
         $data['departmentData']=$this->department_model->departmentData();
+        $data['authorData']=$this->author_model->authorData();
         $this->load->view('book/edit_book',$data);
 
     }
 
-    public function updateBook($bookId){
-        $data['bookId']=$bookId;
+    public function updateBook($bookID){
+        $data['bookID']=$bookID;
         $data['bookName']=$this->input->post('bookName');
         $data['ISBN']=$this->input->post('ISBN');
         $data['dptID']=$this->input->post('dptID');
@@ -101,8 +104,8 @@ class Book extends CI_Controller {
 
     }
 
-    public function deleteBook($bookId){
-        $this->book_model->deleteBook($bookId);
+    public function deleteBook($bookID){
+        $this->book_model->deleteBook($bookID);
         $sData = array();
         $sData['error']='Book Deleted Successfully';
         $this->session->set_flashdata($sData);
