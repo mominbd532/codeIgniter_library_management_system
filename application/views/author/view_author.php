@@ -7,7 +7,7 @@
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
             <div class="navbar-wrapper">
-                <a class="navbar-brand" href="javascript:void(0)">Edit Department</a>
+                <a class="navbar-brand" href="javascript:void(0)">Author List</a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
                 <span class="sr-only">Toggle navigation</span>
@@ -63,48 +63,85 @@
         </div>
     </nav>
     <!-- End Navbar -->
-
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-8">
-                    <!--                        --><?php
-                    //                        $msg =$this->session->flashdata('msg');
-                    //                        if(isset($msg)){
-                    //                            ?>
-                    <!--                            <div id="msg">-->
-                    <!--                                --><?php //echo $msg; ?>
-                    <!--                            </div>-->
-                    <!---->
-                    <!--                        --><?php //   }
-                    //                        ?>
-                    <div class="card">
+
+                <div class="col-md-12">
+                    <?php
+                    $msg =$this->session->flashdata('msg');
+                    if(isset($msg)){
+                        echo $msg;
+                    }
+                    ?>
+                    <div class="card card-plain">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title">Edit Department</h4>
-                            <p class="card-category">Please edit department</p>
+                            <h4 class="card-title mt-0">Author Information</h4>
+                            <p class="card-category">See all author here</p>
                         </div>
                         <div class="card-body">
-                            <form action="<?php echo base_url(); ?>department/updateDepartment/<?php echo $departmentInfo->dptID;?>" method="post">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="bmd-label-floating">Department Name</label>
-                                            <input type="text" name="dptName" class="form-control" value="<?php echo $departmentInfo->dptName;?>">
-                                        </div>
-                                    </div>
+                            <div class="table-responsive">
+                                <table id="example" class="table table-hover">
+                                    <thead class="">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Author Name
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                    </thead>
+                                    <tbody>
 
-                                </div>
+
+                                    <?php
+                                    $i = 0;
+                                    foreach ($authorData as $authorInfo){
+                                        $i++;
+                                        ?>
+                                        <tr>
+                                            <td>
+                                                <?php echo $i;?>
+
+                                            </td>
+                                            <td>
+                                                <?php echo $authorInfo->authorName;?>
+                                            </td>
 
 
-                                <button type="submit" class="btn btn-primary pull-right" >Edit Department</button>
-                                <div class="clearfix" ></div>
-                            </form>
+                                            <td>
+                                                <a href="<?php echo base_url(); ?>author/editAuthor/<?php echo $authorInfo->authorID;?>"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;&nbsp;
+                                                <a  href="#myModal<?php echo $authorInfo->authorID;?>" role="button" data-toggle="modal"><i class="fa fa-trash"></i></a>
 
 
+                                                <div class="modal small fade" id="myModal<?php echo $authorInfo->authorID;?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h3 id="myModalLabel">Are your sure want to delete?</h3>
+                                                            </div>
+
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                                                                <a class="btn btn-danger" href="<?php echo base_url(); ?>author/deleteAuthor/<?php echo $authorInfo->authorID;?>" >Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

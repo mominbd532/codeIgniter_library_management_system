@@ -7,7 +7,7 @@
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
             <div class="navbar-wrapper">
-                <a class="navbar-brand" href="javascript:void(0)">Edit Department</a>
+                <a class="navbar-brand" href="javascript:void(0)">Add Author</a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
                 <span class="sr-only">Toggle navigation</span>
@@ -80,23 +80,23 @@
                     //                        ?>
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title">Edit Department</h4>
-                            <p class="card-category">Please edit department</p>
+                            <h4 class="card-title">Add Author</h4>
+                            <p class="card-category">Please add author</p>
                         </div>
                         <div class="card-body">
-                            <form action="<?php echo base_url(); ?>department/updateDepartment/<?php echo $departmentInfo->dptID;?>" method="post">
+                            <form action="<?php echo base_url(); ?>author/saveAuthor" method="post">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="bmd-label-floating">Department Name</label>
-                                            <input type="text" name="dptName" class="form-control" value="<?php echo $departmentInfo->dptName;?>">
+                                            <label class="bmd-label-floating">Author Name</label>
+                                            <input type="text" name="authorName" class="form-control">
                                         </div>
                                     </div>
 
                                 </div>
 
 
-                                <button type="submit" class="btn btn-primary pull-right" >Edit Department</button>
+                                <button type="submit" class="btn btn-primary pull-right" onclick="md.showNotification('top','right')">Add Author</button>
                                 <div class="clearfix" ></div>
                             </form>
 

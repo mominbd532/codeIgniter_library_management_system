@@ -40,23 +40,29 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="./map.html">
+                <a class="nav-link" href="<?php echo base_url(); ?>author/addAuthor">
                     <i class="material-icons">location_ons</i>
-                    <p>Maps</p>
+                    <p>Add Author</p>
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="./notifications.html">
+                <a class="nav-link" href="<?php echo base_url(); ?>author/viewAuthor">
                     <i class="material-icons">notifications</i>
-                    <p>Notifications</p>
+                    <p>Author List</p>
                 </a>
             </li>
-            <!-- <li class="nav-item active-pro ">
-                  <a class="nav-link" href="./upgrade.html">
+            <li class="nav-item">
+                  <a class="nav-link" href="<?php echo base_url(); ?>book/addBook">
                       <i class="material-icons">unarchive</i>
-                      <p>Upgrade to PRO</p>
+                      <p>Add Book</p>
                   </a>
-              </li> -->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url(); ?>book/viewBook">
+                    <i class="material-icons">unarchive</i>
+                    <p>Book List</p>
+                </a>
+            </li>
         </ul>
     </div>
 </div>
