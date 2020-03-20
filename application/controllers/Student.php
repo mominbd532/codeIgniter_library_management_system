@@ -7,6 +7,7 @@ class Student extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('student_model');
+        $this->load->model('department_model');
         $data= array();
     }
 
@@ -15,21 +16,23 @@ class Student extends CI_Controller {
         $data['header']=$this->load->view('layout/header',$data,TRUE );
         $data['footer']=$this->load->view('layout/footer','',TRUE );
         $data['sidebar']=$this->load->view('layout/sidebar','',TRUE );
+        $data['departmentData']=$this->department_model->departmentData();
         $this->load->view('student/add_student',$data);
     }
 
     public function saveStudent(){
+
         $data['name']=$this->input->post('name');
-        $data['dpt']=$this->input->post('dpt');
+        $data['dptID']=$this->input->post('dptID');
         $data['roll']=$this->input->post('roll');
         $data['reg']=$this->input->post('reg');
 
         $name= $data['name'];
-        $dpt= $data['dpt'];
+        $dptID= $data['dptID'];
         $roll= $data['roll'];
         $reg= $data['reg'];
 
-        if(empty($name) || empty($dpt) || empty($roll) || empty($reg)){
+        if(empty($name) || empty($dptID) || empty($roll) || empty($reg)){
             $sData = array();
             $sData['error']='Field must be not empty';
             $this->session->set_flashdata($sData);
@@ -52,6 +55,7 @@ class Student extends CI_Controller {
         $data['footer']=$this->load->view('layout/footer','',TRUE );
         $data['sidebar']=$this->load->view('layout/sidebar','',TRUE );
         $data['studentData']=$this->student_model->studentData();
+        $data['departmentData']=$this->department_model->departmentData();
         $this->load->view('student/view_student',$data);
     }
 
@@ -61,6 +65,7 @@ class Student extends CI_Controller {
         $data['footer']=$this->load->view('layout/footer','',TRUE );
         $data['sidebar']=$this->load->view('layout/sidebar','',TRUE );
         $data['studentInfo']=$this->student_model->studentInfo($stdId);
+        $data['departmentData']=$this->department_model->departmentData();
         $this->load->view('student/edit_student',$data);
 
     }
@@ -68,16 +73,16 @@ class Student extends CI_Controller {
     public function updateStudent($stdId){
         $data['stdId']=$stdId;
         $data['name']=$this->input->post('name');
-        $data['dpt']=$this->input->post('dpt');
+        $data['dptID']=$this->input->post('dptID');
         $data['roll']=$this->input->post('roll');
         $data['reg']=$this->input->post('reg');
 
         $name= $data['name'];
-        $dpt= $data['dpt'];
+        $dptID= $data['dptID'];
         $roll= $data['roll'];
         $reg= $data['reg'];
 
-        if(empty($name) || empty($dpt) || empty($roll) ||  empty($reg)){
+        if(empty($name) || empty($dptID) || empty($roll) ||  empty($reg)){
             $sData = array();
             $sData['error']='Field must be not empty ';
             $this->session->set_flashdata($sData);

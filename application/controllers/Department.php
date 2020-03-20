@@ -6,6 +6,7 @@ class Department extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('student_model');
         $this->load->model('department_model');
         $data= array();
     }
@@ -86,12 +87,28 @@ class Department extends CI_Controller {
 
     }
 
-    public function deleteDepartment($stdId){
-        $this->department_model->deleteDepartment($stdId);
-        $sData = array();
-        $sData['error']='Department Deleted Successfully';
-        $this->session->set_flashdata($sData);
-        redirect("department/viewDepartment");
+    public function deleteDepartment($dptId){
+       $exist = $this->student_model->studentInfoBydptID($dptId);
+
+        if($exist){
+            $sData = array();
+            $sData['error']='Department not Deleted!!! Student exist in the department';
+            $this->session->set_flashdata($sData);
+            redirect("department/viewDepartment");
+
+
+
+        }else{
+            $this->department_model->deleteDepartment($dptId);
+            $sData = array();
+            $sData['error']='Department Deleted Successfully';
+            $this->session->set_flashdata($sData);
+            redirect("department/viewDepartment");
+
+
+        }
+
+
     }
 
 

@@ -98,7 +98,15 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="bmd-label-floating">Department</label>
-                                                <input type="text" name="dpt" class="form-control">
+
+                                                <select name="dptID" class="form-control">
+                                                    <option value="0" >Select Department</option>
+                                                    <?php
+                                                    foreach ($departmentData as $dData){
+                                                    ?>
+                                                    <option value="<?php echo $dData->dptID; ?>"><?php echo $dData->dptName; ?></option>
+                                                    <?php } ?>
+                                                </select>
                                             </div>
                                         </div>
 

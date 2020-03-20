@@ -32,6 +32,7 @@
     <!-- CSS Files -->
     <link href="<?php echo base_url();?>assets/css/material-dashboard.css?v=2.1.0" rel="stylesheet" />
     <link href="<?php echo base_url();?>assets/css/toasty.min.css" rel="stylesheet" />
+    <link href="<?php echo base_url();?>assets/css/main.css" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="<?php echo base_url();?>assets/demo/demo.css" rel="stylesheet" />
 </head>

@@ -1,0 +1,6 @@
+select.form-control:not([size]):not([multiple]) {
+
+    color: black;
+    background: white;
+    width: 200px;
+}

@@ -28,7 +28,7 @@ class Student_Model extends CI_Model {
 
     public function updateStudent($data){
         $this->db->set('name',$data['name']);
-        $this->db->set('dpt',$data['dpt']);
+        $this->db->set('dptID',$data['dptID']);
         $this->db->set('roll',$data['roll']);
         $this->db->set('reg',$data['reg']);
         $this->db->where('stdId',$data['stdId']);
@@ -39,6 +39,15 @@ class Student_Model extends CI_Model {
     public function deleteStudent($stdId){
         $this->db->where('stdId',$stdId);
         $this->db->delete('student');
+    }
+
+    public function studentInfoBydptID($dptId){
+        $this->db->select('*');
+        $this->db->from('student');
+        $this->db->where('dptId',$dptId);
+        $qresule=$this->db->get();
+        $result =$qresule->row();
+        return $result;
     }
 
 

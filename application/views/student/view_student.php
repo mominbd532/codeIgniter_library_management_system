@@ -119,7 +119,14 @@
                                                 <?php echo $stdInfo->name;?>
                                             </td>
                                             <td>
-                                                <?php echo $stdInfo->dpt;?>
+                                                <?php
+                                                foreach ($departmentData as $dData){
+                                                    if($stdInfo->dptID == $dData->dptID){
+                                                        echo $dData->dptName;
+                                                    }
+
+                                                }
+                                                ?>
                                             </td>
                                             <td>
                                                 <?php echo $stdInfo->roll;?>
