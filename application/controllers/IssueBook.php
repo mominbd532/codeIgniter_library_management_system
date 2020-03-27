@@ -67,6 +67,37 @@ class IssueBook extends CI_Controller {
 
     }
 
+    public function returnBook($id){
+
+        $this->issue_book_model->returnBook($id);
+        $sData = array();
+        $sData['success']='Book return Successfully';
+        $this->session->set_flashdata($sData);
+        redirect("issueBook/returnBookList");
+
+    }
+
+    public function returnBookList(){
+        $data['title']= 'Return Book List';
+        $data['header']=$this->load->view('layout/header',$data,TRUE );
+        $data['footer']=$this->load->view('layout/footer','',TRUE );
+        $data['sidebar']=$this->load->view('layout/sidebar','',TRUE );
+        $data['studentData']=$this->student_model->studentData();
+        $data['departmentData']=$this->department_model->departmentData();
+        $data['bookData']=$this->book_model->bookData();
+        $data['returnBookData']=$this->issue_book_model->returnBookData();
+        $this->load->view('issue_book/return_book_list',$data);
+
+    }
+
+    public function deleteData($id){
+        $this->issue_book_model->deleteIssueBook($id);
+        $sData = array();
+        $sData['error']='Issue Book Deleted Successfully';
+        $this->session->set_flashdata($sData);
+        redirect("issueBook/returnBookList");
+    }
+
 
 
 

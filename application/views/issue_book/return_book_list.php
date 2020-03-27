@@ -7,7 +7,7 @@
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid">
             <div class="navbar-wrapper">
-                <a class="navbar-brand" href="javascript:void(0)">Issued Book List</a>
+                <a class="navbar-brand" href="javascript:void(0)">Return Book List</a>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
                 <span class="sr-only">Toggle navigation</span>
@@ -76,8 +76,8 @@
                     ?>
                     <div class="card card-plain">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title mt-0">Issued Books Information</h4>
-                            <p class="card-category">See all Issued book here</p>
+                            <h4 class="card-title mt-0">Return Books Information</h4>
+                            <p class="card-category">See all Return book here</p>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -111,6 +111,9 @@
                                         Issue date
                                     </th>
                                     <th>
+                                        Return date
+                                    </th>
+                                    <th>
                                         Action
                                     </th>
                                     </thead>
@@ -118,7 +121,7 @@
 
                                     <?php
                                     $i = 0;
-                                    foreach ($issuedBookData as $issueData){
+                                    foreach ($returnBookData as $returnData){
                                         $i++;
                                         ?>
 
@@ -133,7 +136,7 @@
                                             <td>
                                                 <?php
                                                 foreach ($bookData as $bInfo){
-                                                    if($issueData->bookID == $bInfo->bookID){
+                                                    if($returnData->bookID == $bInfo->bookID){
                                                         echo $bInfo->bookName;
                                                     }
 
@@ -144,7 +147,7 @@
                                             <td>
                                                 <?php
                                                 foreach ($bookData as $bInfo){
-                                                    if($issueData->bookID == $bInfo->bookID){
+                                                    if($returnData->bookID == $bInfo->bookID){
                                                         echo $bInfo->ISBN;
                                                     }
 
@@ -155,7 +158,7 @@
                                             <td>
                                                 <?php
                                                 foreach ($bookData as $bInfo){
-                                                    if($issueData->bookID == $bInfo->bookID){
+                                                    if($returnData->bookID == $bInfo->bookID){
                                                         $authorID = $bInfo->authorID;
                                                         $authorInfo=$this->author_model->authorInfo($authorID);
                                                         if(isset($authorInfo)){
@@ -172,7 +175,7 @@
                                             <td>
                                                 <?php
                                                 foreach ($studentData as $sInfo){
-                                                    if($issueData->stdId == $sInfo->stdId){
+                                                    if($returnData->stdId == $sInfo->stdId){
                                                         echo $sInfo->name;
                                                     }
 
@@ -183,7 +186,7 @@
                                             <td>
                                                 <?php
                                                 foreach ($studentData as $sInfo){
-                                                    if($issueData->stdId == $sInfo->stdId){
+                                                    if($returnData->stdId == $sInfo->stdId){
                                                         echo $sInfo->roll;
                                                     }
 
@@ -194,7 +197,7 @@
                                             <td>
                                                 <?php
                                                 foreach ($studentData as $sInfo){
-                                                    if($issueData->stdId == $sInfo->stdId){
+                                                    if($returnData->stdId == $sInfo->stdId){
                                                         echo $sInfo->reg ;
                                                     }
 
@@ -205,7 +208,7 @@
                                             <td>
                                                 <?php
                                                 foreach ($studentData as $sInfo){
-                                                    if($issueData->stdId == $sInfo->stdId){
+                                                    if($returnData->stdId == $sInfo->stdId){
                                                         $dptID = $sInfo->dptID ;
                                                         $departmentInfo =$this->department_model->departmentInfo($dptID);
 
@@ -220,25 +223,29 @@
 
                                             </td>
                                             <td>
-                                                <?php echo date("d/m/Y h:ia", strtotime($issueData->issueDate)) ; ?>
+                                                <?php echo date("d/m/Y h:ia", strtotime($returnData->issueDate)) ; ?>
+
+                                            </td>
+                                            <td>
+                                                <?php echo date("d/m/Y h:ia", strtotime($returnData->returnDate)) ; ?>
 
                                             </td>
 
                                             <td>
 
-                                                <a  href="#myModal<?php echo $issueData->id; ?>" role="button" data-toggle="modal"><i class="fa fa-trash"></i></a>
+                                                <a  href="#myModal<?php echo $returnData->id; ?>" role="button" data-toggle="modal"><i class="fa fa-trash"></i></a>
 
 
-                                                <div class="modal small fade" id="myModal<?php echo $issueData->id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal small fade" id="myModal<?php echo $returnData->id; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h3 id="myModalLabel">Are your sure, return this book?</h3>
+                                                                <h3 id="myModalLabel">Are your sure, went to delete?</h3>
                                                             </div>
 
                                                             <div class="modal-footer">
                                                                 <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                                                                <a class="btn btn-danger" href="<?php echo base_url(); ?>issueBook/returnBook/<?php echo $issueData->id; ?>" >Return</a>
+                                                                <a class="btn btn-danger" href="<?php echo base_url(); ?>issueBook/deleteData/<?php echo $returnData->id; ?>" >Return</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -248,7 +255,7 @@
                                             </td>
                                         </tr>
 
-                                        <?php } ?>
+                                    <?php } ?>
 
 
                                     </tbody>
