@@ -106,10 +106,10 @@
     </div>
 </div>
 <!--   Core JS Files   -->
+
 <script src="<?php echo base_url();?>assets/js/core/jquery.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/core/popper.min.js"></script>
 <script src="<?php echo base_url();?>assets/js/core/bootstrap-material-design.min.js"></script>
-<script src="<?php echo base_url();?>assets/js/main.js"></script>
 <script src="https://unpkg.com/default-passive-events"></script>
 <script src="<?php echo base_url();?>assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
 <!-- Place this tag in your head or just before your close body tag. -->
@@ -126,6 +126,7 @@
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="<?php echo base_url();?>assets/demo/demo.js"></script>
 <script src="<?php echo base_url();?>assets/js/toasty.min.js"></script>
+<script src="<?php echo base_url();?>assets/js/main.js"></script>
 <!-- DataTable JS -->
 
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
@@ -136,6 +137,28 @@
 
 <script>
     $(document).ready(function () {
+        $('#department').change(function () {
+
+            var dep =$('#department').val();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url(); ?>book/getBookByDepID/"+dep,
+                success: function (data) {
+                    $('#book').html(data);
+
+                }
+            });
+        });
+
+
+
+    });
+
+
+</script>
+<script>
+    $(document).ready(function () {
+
         var toast = new Toasty();
 
         <?php if ($this->session->flashdata('success')) {?>

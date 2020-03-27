@@ -63,6 +63,18 @@
                     <p>Book List</p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url(); ?>issueBook/index">
+                    <i class="material-icons">unarchive</i>
+                    <p>Issue Book</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url(); ?>issueBook/issuedBookList">
+                    <i class="material-icons">unarchive</i>
+                    <p>Issued Books</p>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

@@ -112,6 +112,20 @@ class Book extends CI_Controller {
         redirect("book/viewBook");
     }
 
+    public function getBookByDepID($dptID){
+        $getBooks = $this->book_model->getBookBydptID($dptID);
+        $output = null;
+        $output .='<option value="0" >Select Books</option>';
+        foreach ($getBooks as $book){
+            $output .='<option value="'.$book->bookID.'" >'.$book->bookName.'</option>';
+
+        }
+
+        echo $output;
+
+    }
+
+
 
 
 

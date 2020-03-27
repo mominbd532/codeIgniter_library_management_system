@@ -41,6 +41,15 @@ class Book_Model extends CI_Model {
         $this->db->delete('book');
     }
 
+    public function getBookBydptID($dptID){
+        $this->db->select('*');
+        $this->db->from('book');
+        $this->db->where('dptID',$dptID);
+        $qresule=$this->db->get();
+        $result =$qresule->result();
+        return $result;
+    }
+
 
 
 
