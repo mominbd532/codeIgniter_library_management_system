@@ -9,6 +9,12 @@ class Department extends CI_Controller {
         $this->load->model('student_model');
         $this->load->model('department_model');
         $data= array();
+        if(!$this->session->userdata('userLogin')){
+            $sData = array();
+            $sData['msg']=' <a class="btn btn-danger">Need to login first</a>';
+            $this->session->set_flashdata($sData);
+            redirect('user/login');
+        }
     }
 
     public function addDepartment(){
